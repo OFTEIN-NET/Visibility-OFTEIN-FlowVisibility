@@ -1,4 +1,4 @@
-package oftein.visibility.pcap;
+package flow.visibility.pcap;
 
 import java.io.PrintStream;
 

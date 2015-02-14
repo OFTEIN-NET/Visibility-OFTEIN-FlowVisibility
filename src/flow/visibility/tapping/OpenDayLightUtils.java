@@ -1,4 +1,4 @@
-package oftein.visibility.tapping;
+package flow.visibility.tapping;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import oftein.visibility.pcap.CustomOutputStream;
+import flow.visibility.pcap.CustomOutputStream;
 
 import org.apache.commons.codec.binary.Base64;
 

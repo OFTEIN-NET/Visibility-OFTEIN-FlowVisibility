@@ -1,4 +1,4 @@
-package oftein.visibility.tapping;
+package flow.visibility.tapping;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

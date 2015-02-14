@@ -1,4 +1,4 @@
-package oftein.visibility.pcap;
+package flow.visibility;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,13 +13,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import oftein.visibility.tapping.FlowTapping;
+import flow.visibility.pcap.FlowDumper;
+import flow.visibility.pcap.FlowProcess;
+import flow.visibility.tapping.FlowTapping;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeriesCollection;
+
+import netgrok.view.network.NetworkView;
 
 public class FlowMain  {
 
@@ -31,7 +35,7 @@ public class FlowMain  {
         return Chart;
 		   
    }
-	        
+   
 
    public static void main(String[] args) throws Exception { 
 	   
@@ -101,13 +105,27 @@ public class FlowMain  {
 		
 		mb.add(menu);
 		
-		menu = new JMenu("Visualization");
-
+		menu = new JMenu("Flow Detail");
+		JMenuItem FlowVisual = new JMenuItem("Flow Visualization");
+		JMenuItem FlowInspect = new JMenuItem("Flow Inspections");
+		menu.add(FlowVisual);
+		FlowVisual.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	NetworkView.main(null);
+            }
+        });
+		menu.add(FlowInspect);
+		FlowInspect.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	
+            }
+        });
 		mb.add(menu);
 		
 		menu = new JMenu("Help");
 		menu.add(new JMenuItem("About"));
-
 		mb.add(menu);
 		
 
