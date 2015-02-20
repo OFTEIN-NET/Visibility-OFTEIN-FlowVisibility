@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import jethereal.Ethereal;
 import flow.visibility.pcap.FlowDumper;
 import flow.visibility.pcap.FlowProcess;
 import flow.visibility.tapping.FlowTapping;
@@ -119,7 +120,7 @@ public class FlowMain  {
 		FlowInspect.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            	
+            	Ethereal.main(null);
             }
         });
 		mb.add(menu);
