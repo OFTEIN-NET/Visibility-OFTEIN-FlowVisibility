@@ -1,6 +1,7 @@
 package flow.visibility.pcap;
 
 import java.io.PrintStream;
+import java.sql.Timestamp;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
@@ -17,6 +18,12 @@ import org.jnetpcap.Pcap;
 import org.jnetpcap.packet.JFlowMap;
 import org.jnetpcap.packet.JPacket;
 import org.jnetpcap.packet.JPacketHandler;
+import org.jnetpcap.packet.format.FormatUtils;
+import org.jnetpcap.protocol.lan.Ethernet;
+import org.jnetpcap.protocol.network.Icmp;
+import org.jnetpcap.protocol.network.Ip4;
+import org.jnetpcap.protocol.tcpip.Tcp;
+import org.jnetpcap.protocol.tcpip.Udp;
 
 public class FlowProcess {
 
@@ -181,6 +188,81 @@ public class FlowProcess {
    }
        
 
+   public static JInternalFrame FlowSequence()
+   {
+       
+       final StringBuilder errbuf = new StringBuilder(); // For any error msgs  
+       final String file = "tmp-capture-file.pcap";
+	   
+	   //System.out.printf("Opening file for reading: %s%n", file);  
+       
+       /*************************************************************************** 
+        * Second we open up the selected file using openOffline call 
+        **************************************************************************/  
+       Pcap pcap = Pcap.openOffline(file, errbuf);  
+ 
+       if (pcap == null) {  
+           System.err.printf("Error while opening device for capture: "  
+               + errbuf.toString());
+       }  
+
+       
+       JInternalFrame FlowSequence = new JInternalFrame("Flow Sequence", true, true, true, true);
+       FlowSequence.setBounds(601, 0, 600, 660);
+       JTextArea textArea3 = new JTextArea(50, 10);
+       PrintStream printStream3 = new PrintStream(new CustomOutputStream(textArea3));
+	        System.setOut(printStream3);
+	        System.setErr(printStream3);
+	        JScrollPane scrollPane3 = new JScrollPane(textArea3);
+	        FlowSequence.add(scrollPane3);
+
+       
+       
+		JPacketHandler<String> jpacketHandler = new JPacketHandler<String>() {
+
+			public void nextPacket(JPacket packet, String user) {
+				final JCaptureHeader header = packet.getCaptureHeader();
+				Timestamp timestamp = new Timestamp(header.timestampInMillis());
+				Tcp tcp = new Tcp();
+				Udp udp = new Udp();
+				Icmp icmp = new Icmp();
+				Ip4 ip4 = new Ip4();
+				Ethernet ethernet = new Ethernet();
+				
+				if (packet.hasHeader(ip4)) {
+
+					if (packet.hasHeader(tcp)) {
+						System.out.println(timestamp.toString() + " :  [TCP]  :  " + FormatUtils.ip(ip4.source()) + ":" + tcp.source() + "->" + FormatUtils.ip(ip4.destination())+ ":" + tcp.destination());
+					}	
+					if (packet.hasHeader(udp)) {
+						System.out.println(timestamp.toString() + " :  [UDP]  :  " + FormatUtils.ip(ip4.source()) + ":" + udp.source() + "->" + FormatUtils.ip(ip4.destination())+ ":" + udp.destination());
+					}
+					if (packet.hasHeader(icmp)) {
+						System.out.println(timestamp.toString() + " : [ICMP]  :  " + FormatUtils.ip(ip4.source()) + "->" + FormatUtils.ip(ip4.destination())+ ":" + icmp.type());
+					}
+
+				}
+				
+				else if (packet.hasHeader(ethernet)) {
+					System.out.println(timestamp.toString() + " :  [ETH]  :  " + FormatUtils.mac(ethernet.source()) + "->" + FormatUtils.mac(ethernet.destination())+ ":" + ethernet.type());
+
+				}
+			}
+		};
+       
+       Pcap pcap4 = Pcap.openOffline(file, errbuf);
+       
+       FlowSequence.setVisible(true);
+       pcap4.loop(Pcap.LOOP_INFINITE, jpacketHandler, null);
+       FlowSequence.revalidate();
+       pcap4.close();
+       
+       return FlowSequence;
+       
+   }
+
+   
+   
 }
 
 

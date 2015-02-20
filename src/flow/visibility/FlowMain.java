@@ -156,13 +156,21 @@ public class FlowMain  {
  	    FlowSummary.setVisible(true);
  	    desktop.add(FlowSummary);
         
-        JInternalFrame FlowInspection = new JInternalFrame("Flow Inspection", true, true, true, true);
-        FlowInspection.setBounds(601, 0, 600, 660);
-        JTextArea textArea2 = new JTextArea(50, 10);
- 	    JScrollPane scrollPane2 = new JScrollPane(textArea2);
- 	    FlowInspection.add(scrollPane2);
-        FlowInspection.setVisible(true);
-        desktop.add(FlowInspection);
+        //JInternalFrame FlowInspection = new JInternalFrame("Flow Inspection", true, true, true, true);
+        //FlowInspection.setBounds(601, 0, 600, 660);
+        //JTextArea textArea2 = new JTextArea(50, 10);
+ 	    //JScrollPane scrollPane2 = new JScrollPane(textArea2);
+ 	    //FlowInspection.add(scrollPane2);
+        //FlowInspection.setVisible(true);
+        //desktop.add(FlowInspection);
+        
+        JInternalFrame FlowSequence = new JInternalFrame("Flow Sequence", true, true, true, true);
+        FlowSequence.setBounds(601, 0, 600, 660);
+        JTextArea textArea3 = new JTextArea(50, 10);
+ 	    JScrollPane scrollPane3 = new JScrollPane(textArea3);
+ 	    FlowSequence.add(scrollPane3);
+ 	    FlowSequence.setVisible(true);
+        desktop.add(FlowSequence);
         
         
        // Regularly update the Frame Content
@@ -172,7 +180,8 @@ public class FlowMain  {
        	    desktop.removeAll();
        	    desktop.add(FlowProcess.FlowStatistic());
        	    desktop.add(FlowProcess.FlowSummary());
-       	    desktop.add(FlowProcess.FlowInspection());
+       	    //desktop.add(FlowProcess.FlowInspection());
+       	    desktop.add(FlowProcess.FlowSequence());
        	    desktop.revalidate();
         	Thread.sleep(3000);
        	    
