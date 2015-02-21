@@ -82,7 +82,12 @@ public class OpenDaylightHelper {
     	
     	//Sample post data.
         JSONObject postData = new JSONObject();
+        postData.put("installInHw", "true");
         postData.put("name", Flow);
+        postData.put("ingressPort", Ingress);
+        postData.put("priority", Priority);
+        postData.put("etherType", "0x800");
+        
         //postData.put("nwSrc", Filter1);
         if (! Filter1.equals("")) {
         	postData.put("nwSrc", Filter1);
@@ -103,12 +108,9 @@ public class OpenDaylightHelper {
         	postData.put("tpDst", Filter5);
         }
         if (! Filter6.equals("")) {
-        	postData.put("vlanID", Filter6);
+        	postData.put("vlanId", Filter6);
         }
-        
-        postData.put("installInHw", "true");
-        postData.put("priority", Priority);
-        postData.put("etherType", "0x800");
+
         String Action = "OUTPUT=" + Outgress;
         postData.put("actions", new JSONArray().put(Action));
         
