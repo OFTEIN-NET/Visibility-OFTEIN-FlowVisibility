@@ -31,19 +31,19 @@ public class OpenDayLightUtils extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private JTextArea textArea;
+	private JTextArea FlowtextArea;
 	 private JScrollPane scrollPane;
 	 public OpenDayLightUtils() {
 	      super("Installed Flow");
 
-	      textArea = new JTextArea(50, 10);
-	      textArea.setEditable(false);
-	      textArea.setFont(new Font("Courier New", Font.BOLD,12));
-	      PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+	      FlowtextArea = new JTextArea(50, 10);
+	      FlowtextArea.setEditable(false);
+	      FlowtextArea.setFont(new Font("Courier New", Font.BOLD,12));
+	      PrintStream FlowprintStream = new PrintStream(new CustomOutputStream(FlowtextArea));
 
 	      // re-assigns standard output stream and error output stream
-	      System.setOut(printStream);
-	      System.setErr(printStream);
+	      System.setOut(FlowprintStream);
+	      System.setErr(FlowprintStream);
 
 	      // creates the GUI
 	      setLayout(new GridBagLayout());
@@ -59,7 +59,7 @@ public class OpenDayLightUtils extends JFrame {
 	      constraints.weightx = 1.0;
 	      constraints.weighty = 1.0;
 
-	      scrollPane = new JScrollPane(textArea);
+	      scrollPane = new JScrollPane(FlowtextArea);
 	      this.add(scrollPane, constraints);
 
           setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

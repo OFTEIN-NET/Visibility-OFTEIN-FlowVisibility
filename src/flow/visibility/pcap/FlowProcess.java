@@ -58,8 +58,8 @@ public class FlowProcess {
         FlowMap map = new FlowMap();
         pcap1.loop(Pcap.LOOP_INFINITE, map, null);
         
-        System.out.printf(map.toString());
-        System.out.printf(map.toString2());
+        //System.out.printf(map.toString());
+        //System.out.printf(map.toString2());
            
         String packet = map.toString2();
         String[] NumberPacket = packet.split(",");
@@ -68,7 +68,7 @@ public class FlowProcess {
            
         for (int i = 0; i<NumberPacket.length-1; i=i+1) {
                
-          	System.out.printf(NumberPacket[i+1] + "\n");
+          	//System.out.printf(NumberPacket[i+1] + "\n");
            	double NoPacket = Double.valueOf(NumberPacket[i+1]);
            	Flow.add(i, NoPacket);
 

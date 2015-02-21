@@ -33,8 +33,8 @@ public FlowTapping(JButton Exit) {
 	final JPasswordField ODPPassword = new JPasswordField();
 
 	//Create panel for Tapping configuration
-	JPanel panel1 = new JPanel(new GridLayout(7,2));
-	panel1.setPreferredSize(new Dimension(380, 210));
+	JPanel panel1 = new JPanel(new GridLayout(11,2));
+	panel1.setPreferredSize(new Dimension(380, 330));
 	panel1.setBorder(BorderFactory.createTitledBorder("Tapping Configuration"));
 	JLabel DPIDLabel = new JLabel("Datapath ID");
 	JLabel FlowLabel = new JLabel("Flow Name");
@@ -43,6 +43,10 @@ public FlowTapping(JButton Exit) {
 	JLabel OutgressLabel = new JLabel("Output Port");
 	JLabel Filter1Label = new JLabel("Source IP Address");
 	JLabel Filter2Label = new JLabel("Destination IP Address");
+	JLabel Filter3Label = new JLabel("Protocol");
+	JLabel Filter4Label = new JLabel("Source Port");
+	JLabel Filter5Label = new JLabel("Destination Port");
+	JLabel Filter6Label = new JLabel("VLAN ID");
 	
 	final JTextField DPID = new JTextField();
 	final JTextField Flow = new JTextField();
@@ -51,6 +55,10 @@ public FlowTapping(JButton Exit) {
 	final JTextField Outgress = new JTextField();
 	final JTextField Filter1 = new JTextField();
 	final JTextField Filter2 = new JTextField();
+	final JTextField Filter3 = new JTextField();
+	final JTextField Filter4 = new JTextField();
+	final JTextField Filter5 = new JTextField();
+	final JTextField Filter6 = new JTextField();
 	
 	JButton FlowEntry = new JButton("Check Connection & Flow Entry");
 	JButton Apply = new JButton("Apply Tapping Policy");
@@ -93,10 +101,14 @@ public FlowTapping(JButton Exit) {
 			final String OutgressValue = Outgress.getText();
 			final String Filter1Value = Filter1.getText();
 			final String Filter2Value = Filter2.getText();
+			final String Filter3Value = Filter3.getText();
+			final String Filter4Value = Filter4.getText();
+			final String Filter5Value = Filter5.getText();
+			final String Filter6Value = Filter6.getText();
 			
 			try {
 
-				OpenDaylightHelper.main(ODPURLValue, ODPAccountValue, ODPPasswordValue, DPIDValue, FlowValue, PriorityValue, IngressValue, OutgressValue, Filter1Value, Filter2Value);
+				OpenDaylightHelper.main(ODPURLValue, ODPAccountValue, ODPPasswordValue, DPIDValue, FlowValue, PriorityValue, IngressValue, OutgressValue, Filter1Value, Filter2Value, Filter3Value, Filter4Value, Filter5Value, Filter6Value);
 				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -143,6 +155,14 @@ public FlowTapping(JButton Exit) {
 	panel1.add(Filter1);
 	panel1.add(Filter2Label);
 	panel1.add(Filter2);
+	panel1.add(Filter3Label);
+	panel1.add(Filter3);
+	panel1.add(Filter4Label);
+	panel1.add(Filter4);
+	panel1.add(Filter5Label);
+	panel1.add(Filter5);
+	panel1.add(Filter6Label);
+	panel1.add(Filter6);
 	
 	add(panel0);
 	add(FlowEntry);
@@ -174,7 +194,7 @@ public FlowTapping(JButton Exit) {
 	});
     
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(400, 420);
+    frame.setSize(400, 540);
     frame.setVisible(true);
   }
 }

@@ -74,7 +74,7 @@ public class OpenDaylightHelper {
         }
     }
     
-    public static void main(String ODPURL, String ODPAccount, String ODPPassword, String DPID, String Flow, String Priority, String Ingress, String Outgress, String Filter1, String Filter2) throws JSONException {
+    public static void main(String ODPURL, String ODPAccount, String ODPPassword, String DPID, String Flow, String Priority, String Ingress, String Outgress, String Filter1, String Filter2, String Filter3, String Filter4, String Filter5, String Filter6) throws JSONException {
         //OpenDaylight Data
     	//String ODPURL = "103.22.221.152:8080";
     	//String ODPAccount = "admin";
@@ -83,8 +83,29 @@ public class OpenDaylightHelper {
     	//Sample post data.
         JSONObject postData = new JSONObject();
         postData.put("name", Flow);
-        postData.put("nwSrc", Filter1);
-        postData.put("nwDst", Filter2);
+        //postData.put("nwSrc", Filter1);
+        if (! Filter1.equals("")) {
+        	postData.put("nwSrc", Filter1);
+        }
+        
+        //postData.put("nwDst", Filter2);
+        if (! Filter2.equals("")) {
+        	postData.put("nwDst", Filter2);
+        }
+        
+        if (! Filter3.equals("")) {
+        	postData.put("protocol", Filter3);
+        }
+        if (! Filter4.equals("")) {
+        	postData.put("tpSrc", Filter4);
+        }
+        if (! Filter5.equals("")) {
+        	postData.put("tpDst", Filter5);
+        }
+        if (! Filter6.equals("")) {
+        	postData.put("vlanID", Filter6);
+        }
+        
         postData.put("installInHw", "true");
         postData.put("priority", Priority);
         postData.put("etherType", "0x800");
