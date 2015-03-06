@@ -19,17 +19,17 @@ In order to run this tool, the required setup is:
 Then also some required components such as:
 
 * Switch (Hardware or Software) supporting Traffic SPAN/Mirroring
-* OpenDayLight (OpenFlow) Controller
+* OpenDayLight (OpenFlow) Controller - [www.opendaylight.org](www.opendaylight.org)
 * Laptop/PC with two interfaces (configuration and capture)
-* Eclipse for building and debugging the codes
+* Eclipse for building and debugging the codes - [www.eclipse.org](www.eclipse.org)
 
 ### Current Features ###
 The current features include:
 
 * Flow Tapping Configuration
-* Flow Summary (Basic Processing) based on JNetPcap Library
-* Flow Visualization based on NetGrok project
-* Flow Inspection based on JEthereal project
+* Flow Summary (Basic Processing) based on JNetPcap Library - [http://jnetpcap.com/](http://jnetpcap.com/)
+* Flow Visualization based on NetGrok project - [http://www.cs.umd.edu/projects/netgrok/](http://www.cs.umd.edu/projects/netgrok/)
+* Flow Inspection based on JEthereal project - [http://yuba.stanford.edu/JEthereal/](http://yuba.stanford.edu/JEthereal/)
 
 ## How to Build and Run ##
 
