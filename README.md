@@ -5,13 +5,24 @@ FlowVisibility : Java based Visibility (Monitoring) in the Flow/Packet Level
 ### Summary ###
 
 * Quick Summary
+This tool is developed for configuring and monitoring OpenFlow based network by utilizing tapping mechanism through OpenFlow Controller (OpenDayLight). 
 * Version Release
+This is the first version of the tools. 
 * Next Release (Works)
+Distributed FlowVisibility Tool include setup visualization.
 
 ### How it works ###
 
 * Network (Physical) Setup
-* Required Configuration
+In order to run this tool, the required setup is:
+
+* Required Components
+Then also some required components such as:
+** Switch (Hardware or Software) supporting Traffic SPAN/Mirroring
+** OpenDayLight (OpenFlow) Controller
+** Laptop/PC with two interfaces (configuration and capture)
+** Eclipse for building and debugging the codes
+
 * Current Features 
 
 ### How to Build and Run ###
