@@ -26,7 +26,7 @@ Then also some required components such as:
 ### Current Features ###
 The current features include:
 
-* Flow Tapping Configuration
+* Flow Tapping Configuration based on OpenDayLight REST API - [https://wiki.opendaylight.org/view/OpenDaylight_Controller:REST_Reference_and_Authentication](https://wiki.opendaylight.org/view/OpenDaylight_Controller:REST_Reference_and_Authentication)
 * Flow Summary (Basic Processing) based on JNetPcap Library - [http://jnetpcap.com/](http://jnetpcap.com/)
 * Flow Visualization based on NetGrok project - [http://www.cs.umd.edu/projects/netgrok/](http://www.cs.umd.edu/projects/netgrok/)
 * Flow Inspection based on JEthereal project - [http://yuba.stanford.edu/JEthereal/](http://yuba.stanford.edu/JEthereal/)
@@ -36,7 +36,7 @@ The current features include:
 ### Dependencies ###
 
 * Java Version
-* Pcap Library (Linux/Windows)
+* Pcap Library (Linux/Windows) 
 * JNetPcap Library
 
 ### How to Build and Run ###
