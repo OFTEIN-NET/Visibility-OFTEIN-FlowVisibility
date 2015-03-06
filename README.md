@@ -6,6 +6,7 @@ FlowVisibility : Java based Visibility (Monitoring) in the Flow/Packet Level
 
 ### Overview ###
 This tool is developed for configuring and monitoring OpenFlow based network by utilizing tapping mechanism through OpenFlow Controller (OpenDayLight). 
+
 ### Release Version ###
 This is the first version of the tools. Next Release (Works) will be Distributed FlowVisibility Tool include setup visualization.
 
@@ -23,21 +24,56 @@ Then also some required components such as:
 * Eclipse for building and debugging the codes
 
 ### Current Features ###
+The current features include:
+
+* Flow Tapping Configuration
+* Flow Summary (Basic Processing) based on JNetPcap Library
+* Flow Visualization based on NetGrok project
+* Flow Inspection based on JEthereal project
 
 ## How to Build and Run ##
 
 ### Dependencies ###
-### Required Packages/Library ###
+
+* Java Version
+* Pcap Library (Linux/Windows)
+* JNetPcap Library
+
 ### How to Build and Run ###
+
+Downloading the source code manually
+Import the source code into Eclipse Project
+
+Import directly from Git directory
+
+Build and Run the Code
+
 ### Main Windows (GUI) ###
+
+Successful running will be shown this main GUI.
 
 ## How to Use (Guidelines)  ##
 
 ### SPAN/Mirroring Verification ###
+Depends on your switch that you are using, check the mirroring status.
+For OpenFlow based software switch (Open vSwitch) use this command:
+
 ### Tapping Configuration ###
+
+* Open the OpenFlow controller for the tapping switch and check the ports number/name.
+* Open the Tapping configuration in the Flow visibility Tools (Configuration > Tapping Configuration)
+* Enter the required information (Controller information, Flow Match/Filter, and Port Destination)
+* Apply the Tapping Policy or Configuration
+
 ### Starting Flow Capture ###
+* Start the Flow Capture (Control > Start Capture)
+
 ### Checking Update Main GUI ###
+Check the main GUI will be updated automatically.
+
 ### Flow Details : Inspection and Visualization ###
+* Flow Inspection based on JEthereal project will open the captured file (Flow Details > Flow Inspection)
+* Flow Visualization based on NetGrok Project will visualize the information stored in the Pcap file (Flow Details > Flow Visualization)
 
 ## Support and Contribution ##
 
