@@ -64,6 +64,7 @@ Successful running will be shown this main GUI.
 ### SPAN/Mirroring Verification ###
 Depends on your switch that you are using, check the mirroring status.
 For OpenFlow based software switch (Open vSwitch) use this command:
+**ovs-vsctl list mirror <mirror_session_name>**
 
 ### Tapping Configuration ###
 
