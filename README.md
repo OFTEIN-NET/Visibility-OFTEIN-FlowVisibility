@@ -47,15 +47,16 @@ Downloading the source code manually from:
 Import the source code into Eclipse Project
 See this link for details [Importing Existing Project](http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm)
 
-Import directly from Git directory
+Import directly from Git directory.
 See this link for details [EGit/User Guide](http://wiki.eclipse.org/EGit/User_Guide)
 
-Build and Run the Code
+Build and Run the Code.
 Click **Project** and **Run** from the Eclipse Menu
 
 ### Main Windows (GUI) ###
 
 Successful running will be shown this main GUI.
+![MainGUI.png](https://bitbucket.org/repo/bjAzAx/images/3633801302-MainGUI.png)
 
 ## How to Use (Guidelines)  ##
 
@@ -65,20 +66,20 @@ For OpenFlow based software switch (Open vSwitch) use this command:
 
 ### Tapping Configuration ###
 
-* Open the OpenFlow controller for the tapping switch and check the ports number/name.
-* Open the Tapping configuration in the Flow visibility Tools (Configuration > Tapping Configuration)
-* Enter the required information (Controller information, Flow Match/Filter, and Port Destination)
-* Apply the Tapping Policy or Configuration
+* Open the OpenDayLight for the tapping switch and check the **Datapath ID** and **ports number**
+* Open the Tapping configuration in the Flow visibility Tools (**Configuration > Tapping Configuration**)
+* Enter the required information (OpenDayLight information, Flow Match/Filter, and Port Destination)
+* Click **Apply Tapping Policy** for adding the Flow Entry
 
 ### Starting Flow Capture ###
-* Start the Flow Capture (Control > Start Capture)
+* Start the Flow Capture (**Control > Start Capture**)
 
 ### Checking Update Main GUI ###
 Check the main GUI will be updated automatically.
 
 ### Flow Details : Inspection and Visualization ###
-* Flow Inspection based on JEthereal project will open the captured file (Flow Details > Flow Inspection)
-* Flow Visualization based on NetGrok Project will visualize the information stored in the Pcap file (Flow Details > Flow Visualization)
+* Flow Inspection based on JEthereal project will open the captured file (**Flow Details > Flow Inspection**)
+* Flow Visualization based on NetGrok Project will visualize the information stored in the Pcap file (**Flow Details > Flow Visualization**)
 
 ## Support and Contribution ##
 
