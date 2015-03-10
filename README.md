@@ -14,9 +14,7 @@ This is the first version of the tools. Next Release (Works) will be Distributed
 
 ### Network (Physical) Setup ###
 In order to run this tool, the required network setup is:
-
 ![FlowTapping.jpg](https://bitbucket.org/repo/bjAzAx/images/1737790542-FlowTapping.jpg)
-
 ### Required Components ###
 Then also some required components such as:
 
@@ -37,18 +35,23 @@ The current features include:
 
 ### Dependencies ###
 
-* Java Version
-* Pcap Library (Linux/Windows) 
-* JNetPcap Library
+* Java Version - [Oracle Java](https://java.com/en/download/manual.jsp)
+* Pcap Library (Linux/Windows) - [LibPcap](http://www.tcpdump.org/#latest-release) or [WinPcap](https://www.winpcap.org/install/)
+* JNetPcap Library - JNetPcap Library - [http://jnetpcap.com/](http://jnetpcap.com/)
 
 ### How to Build and Run ###
 
-Downloading the source code manually
+Downloading the source code manually from:
+**https://ariscahyadi@bitbucket.org/ariscahyadi/flowvisibility.git**
+
 Import the source code into Eclipse Project
+See this link for details [Importing Existing Project](http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm)
 
 Import directly from Git directory
+See this link for details [EGit/User Guide](http://wiki.eclipse.org/EGit/User_Guide)
 
 Build and Run the Code
+Click **Project** and **Run** from the Eclipse Menu
 
 ### Main Windows (GUI) ###
 
