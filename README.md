@@ -13,7 +13,9 @@ This is the first version of the tools. Next Release (Works) will be Distributed
 ## How it works ##
 
 ### Network (Physical) Setup ###
-In order to run this tool, the required setup is:
+In order to run this tool, the required network setup is:
+
+![FlowTapping.jpg](https://bitbucket.org/repo/bjAzAx/images/1737790542-FlowTapping.jpg)
 
 ### Required Components ###
 Then also some required components such as:
