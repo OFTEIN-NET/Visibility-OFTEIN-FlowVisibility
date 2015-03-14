@@ -32,6 +32,8 @@ import java.util.logging.*;
 //       visible edges)
 // TODO: clean up code to make more compact (e.g. create an addLabels(group))
 
+// @edited by Aris Cahyadi Risdianto for opening default Pcap File
+
 public class NetworkView extends Display {
 	
 	private static final long serialVersionUID = 1;
@@ -79,7 +81,8 @@ public class NetworkView extends Display {
 		DefaultRendererFactory renderer = new DefaultRendererFactory();
 		m_vis.setRendererFactory(renderer);
 		
-		//Aris: load automatically pcap file
+		/** Edited by Aris: 
+		 *  Loading automatically default pcap file name (without prompting) */
 		
 		Data d = Data.getData();
 		PcapReader.readFile("tmp-capture-file.pcap");
@@ -454,6 +457,7 @@ public class NetworkView extends Display {
 		frame.setVisible(true);
 	}
 	
+	/** Edited by Aris for the Frame Title */
 	public static JFrame frame() {
 		NetworkView view = new NetworkView();
 		JFrame frame = new JFrame("Flow Visualization by NetGrok-Network View");

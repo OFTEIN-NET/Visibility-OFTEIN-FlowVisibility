@@ -1,4 +1,8 @@
-// ThreadDemo.java
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
 
 package flow.visibility.pcap;
 
@@ -13,18 +17,33 @@ import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapDumper;
 import org.jnetpcap.PcapIf;
 
+/**
+*
+* This class for Starting the Capture the packet. 
+* Developing by using JNETPCAP Library.
+* The code refer to Java Thread Demo Code.
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
 public class FlowDumper
 {
+	
+   /** The main function based on the "Stop" status */ 	
+   
    public static void main (boolean Stop)
    {
 	   
 	   final FlowDumperThread mt = new FlowDumperThread();
        
+	   /** If stop false, means start the thread capture */ 
+	   
 	   if (!Stop){
 		   mt.start();
 		   System.out.println("Start Capture");
 	   }
 		
+	   /** If stop true, means stop the thread capture */
 	   else {
 		   mt.requestStop();
 		   System.out.println("Stop Capture");
@@ -32,10 +51,15 @@ public class FlowDumper
    }
 }
 
+
+/** The class for creating the Thread */
+
 class FlowDumperThread extends Thread
 {
 	
    private volatile boolean stop = false;
+   
+   /** Running the thread */
    
    public void run ()
    {
@@ -57,6 +81,8 @@ class FlowDumperThread extends Thread
 
 		System.out.println("Network devices found:");
 
+		/** Detect the available capture interfaces */
+		
 		int TotalInterface = 0;
 		for (PcapIf device : alldevs) {
 			TotalInterface++;
@@ -77,6 +103,8 @@ class FlowDumperThread extends Thread
 			System.out.println(i);
 		}
 
+		/** Select the capture interface */
+		
         String choice = InterfaceSelection(choices);
         
         int index = Arrays.asList(choices).indexOf(choice);
@@ -132,6 +160,8 @@ class FlowDumperThread extends Thread
 	
    }
    
+   /** Function for selecting the capture interface */
+   
    static String InterfaceSelection(String[] choices) {
        String s = (String) JOptionPane.showInputDialog(
                null,
@@ -144,6 +174,8 @@ class FlowDumperThread extends Thread
        return s;
    }
 
+   
+   /** function for stopping the thread */
    
    public void requestStop() {
 	    stop = true;

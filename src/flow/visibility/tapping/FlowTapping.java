@@ -1,3 +1,9 @@
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
+
 package flow.visibility.tapping;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -12,6 +18,18 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+*
+* The main window GUI for Flow Tapping Applications. 
+* Contains field for OpenFlow (OpenDayLight) Controller
+* information and flow parameter (filter and redirect).
+* The action button execute through other class for 
+* querying ang inserting the flow from the controller.
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
+// Main Class with Java Panel
 public class FlowTapping extends JPanel {
 
   /**
@@ -19,9 +37,15 @@ public class FlowTapping extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+/************************************************************** 
+ * Creating Main Panel GUI 
+ **************************************************************/	
+	
 public FlowTapping(JButton Exit) {
 
-	//Create panel for ODP configuration
+	/**Create panel for ODP configuration*/
+	
 	JPanel panel0 = new JPanel(new GridLayout(3,2));
 	panel0.setPreferredSize(new Dimension(380, 90));
 	panel0.setBorder(BorderFactory.createTitledBorder("OpenDayLight Configuration"));
@@ -32,7 +56,7 @@ public FlowTapping(JButton Exit) {
 	final JTextField ODPAccount = new JTextField();
 	final JPasswordField ODPPassword = new JPasswordField();
 
-	//Create panel for Tapping configuration
+	//Create panel for Tapping (Filter and Redirect) configuration
 	JPanel panel1 = new JPanel(new GridLayout(11,2));
 	panel1.setPreferredSize(new Dimension(380, 330));
 	panel1.setBorder(BorderFactory.createTitledBorder("Tapping Configuration"));
@@ -68,6 +92,8 @@ public FlowTapping(JButton Exit) {
 	//Apply.addActionListener(new ButtonListener());
 	//Exit.addActionListener(new ButtonListener());
 	
+	/**Define actions for the buttons (Querying and Inserting the Flow) */
+	
 	FlowEntry.addActionListener(new ActionListener() {
 
 		public void actionPerformed(ActionEvent e) {
@@ -89,7 +115,7 @@ public FlowTapping(JButton Exit) {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			//Collect the input when press the "Apply" button
+			/**Collect the input when press the "Apply" button*/
 			
 			final String ODPURLValue = ODPURL.getText();
 			final String ODPAccountValue = ODPAccount.getText();
@@ -132,7 +158,7 @@ public FlowTapping(JButton Exit) {
 	});*/
 	
 	
-	//Add all elements into Frame
+	/** Add all elements into Panel */
 	
 	panel0.add(ODPURLLabel);
 	panel0.add(ODPURL);
@@ -172,6 +198,8 @@ public FlowTapping(JButton Exit) {
 	
   }
 
+  /** Main Function to create the Frame*/
+
   public static void main(String[] args) {
 
 	//Initialize the frame  
@@ -179,6 +207,8 @@ public FlowTapping(JButton Exit) {
 	JButton Exit = new JButton("Exit");
 	//Get the content and configure the frame 
     frame.getContentPane().add(new FlowTapping(Exit));
+  
+    /** Action Button for Closing the frame*/
     
 	Exit.addActionListener(new ActionListener() {
 

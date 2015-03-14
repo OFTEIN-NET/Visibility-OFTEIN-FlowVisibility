@@ -1,3 +1,9 @@
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
+
 package flow.visibility.tapping;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -24,6 +30,14 @@ import com.google.gson.GsonBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+*
+* The class for queryng inserting the flow entry to the OpenFlow Controller. 
+* Developing by utilizing OpenDayLight REST API.
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
 public class OpenDayLightUtils extends JFrame {
 
 	 /**
@@ -33,6 +47,9 @@ public class OpenDayLightUtils extends JFrame {
 	
 	private JTextArea FlowtextArea;
 	 private JScrollPane scrollPane;
+	 
+	 /** Creating the Pane for Flow Entry */ 
+	 
 	 public OpenDayLightUtils() {
 	      super("Installed Flow");
 
@@ -59,6 +76,8 @@ public class OpenDayLightUtils extends JFrame {
 	      constraints.weightx = 1.0;
 	      constraints.weighty = 1.0;
 
+	      /** Adding the Pane into Frame */ 
+	      
 	      scrollPane = new JScrollPane(FlowtextArea);
 	      this.add(scrollPane, constraints);
 
@@ -68,6 +87,8 @@ public class OpenDayLightUtils extends JFrame {
 	}
 
 	
+	/** The function for inserting the flow */ 
+	 
     public static void FlowEntry(String ODPURL, String ODPAccount, String ODPPassword) throws Exception
     {
 
@@ -76,6 +97,8 @@ public class OpenDayLightUtils extends JFrame {
     String baseURL = "http://" + ODPURL + "/controller/nb/v2/flowprogrammer";
     String containerName = "default";
 
+    /** Check the connection for ODP REST API */ 
+    
     try {
 
         // Create URL = base URL + container
@@ -96,11 +119,15 @@ public class OpenDayLightUtils extends JFrame {
         // Get the response from connection's inputStream
         InputStream content = (InputStream) connection.getInputStream();
 
+        /** The create the frame and blank pane */ 
         OpenDayLightUtils object = new OpenDayLightUtils();
 	    object.setVisible(true);
         
+	    /** Read the Flow entry in JSON Format */ 
         BufferedReader in = new BufferedReader(new InputStreamReader(content));
         String line = "";
+        
+        /** Print line by line in Pane with Pretty JSON */ 
         while ((line = in.readLine()) != null) {
   
             JSONParser jsonParser = new JSONParser();

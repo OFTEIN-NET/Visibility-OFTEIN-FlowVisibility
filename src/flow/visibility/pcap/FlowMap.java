@@ -32,6 +32,9 @@ import org.jnetpcap.packet.PcapPacketHandler;
  * 
  * @author Mark Bednarczyk
  * @author Sly Technologies, Inc.
+ * 
+ * @edit by Aris Cahyadi Risdianto (GIST) to prepare data for Chart
+ * 
  */
 public class FlowMap
     extends HashMap<JFlowKey, JFlow> implements PcapPacketHandler<Object> {
@@ -144,6 +147,13 @@ public class FlowMap
   	return b.toString();
   }
   
+  
+  /** 
+   * Added by Aris:
+   * Create CSV of the Flow Summary for chart data. 
+   * 
+   * */
+  
   public String toString2() {
 	
 	  	String packet ="0";
@@ -154,9 +164,7 @@ public class FlowMap
 	  	}
 	  	
 	  	//System.out.println(packet);
-	  	
 	  	return packet;
 	  }
-  
-  
+    
 }

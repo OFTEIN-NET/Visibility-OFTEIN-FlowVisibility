@@ -1,3 +1,9 @@
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
+
 package flow.visibility;
 
 import java.awt.BorderLayout;
@@ -10,6 +16,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -26,6 +33,19 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import netgrok.view.network.NetworkView;
 
+/**
+*
+* The main window GUI for Visibility Tools. 
+* Contains menu and internal frame which updated regularly
+* by processing Pcap File using JNETPCAP Library.
+*
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
+
+// Main Class
+
 public class FlowMain  {
 
    private static JFreeChart createChart(XYSeriesCollection dataset) {
@@ -38,17 +58,21 @@ public class FlowMain  {
    }
    
 
+// Main Function
+   
    public static void main(String[] args) throws Exception { 
 	   
 	   
-        /*************************************************************************** 
+        /************************************************************** 
          * Creating the Main GUI 
-         **************************************************************************/  
+         **************************************************************/  
        
         final JDesktopPane desktop = new JDesktopPane();
         
 		final JMenuBar mb = new JMenuBar();
 		JMenu menu;
+		
+		/** Add File Menu to Open File and Save Result */
 		
 		menu = new JMenu("File");
 		JMenuItem Open = new JMenuItem("Open");
@@ -67,6 +91,8 @@ public class FlowMain  {
         });
 		
 		mb.add(menu);
+		
+		/** Add Control Menu to Start and Stop Capture */
 		
 		menu = new JMenu("Control");
 		JMenuItem Start = new JMenuItem("Start Capture");
@@ -92,6 +118,8 @@ public class FlowMain  {
 		
 		mb.add(menu);
 		
+		/** Add Configuration Menu for Tapping and Display */
+		
 		menu = new JMenu("Configuration");
 		JMenuItem Tapping = new JMenuItem("Tapping Configuration");
 		JMenuItem Display = new JMenuItem("Display Configuration");
@@ -105,6 +133,8 @@ public class FlowMain  {
 		menu.add(Display);
 		
 		mb.add(menu);
+		
+		/** Add Detail Menu for NetGrok Visualization and JEthereal Inspection */
 		
 		menu = new JMenu("Flow Detail");
 		JMenuItem FlowVisual = new JMenuItem("Flow Visualization");
@@ -125,11 +155,21 @@ public class FlowMain  {
         });
 		mb.add(menu);
 		
+		/** Add Help Menu for Software Information */
 		menu = new JMenu("Help");
-		menu.add(new JMenuItem("About"));
+		JMenuItem About = new JMenuItem("About");
+		menu.add(About);
+		About.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	JOptionPane.showMessageDialog(null, "OF@TEIN Flow Visibility Tools @ 2015 by GIST", 
+            			"About the Software", JOptionPane.PLAIN_MESSAGE);
+            }
+        });
 		mb.add(menu);
 		
 
+		/** Creating the main frame */
         JFrame frame = new JFrame("OF@TEIN Flow Visibility Tools");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -139,8 +179,9 @@ public class FlowMain  {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
-        //Add Blank Internal Jframe
+        /**Add Blank three (3) Internal Jframe*/
         
+        /**Internal Frame from Flow Summary Chart*/
    	    JInternalFrame FlowStatistic = new JInternalFrame("Flow Statistic", true, true, true, true);
    	    FlowStatistic.setBounds(0, 0, 600, 330);
    	    ChartPanel chartPanel = new ChartPanel(createChart(null));
@@ -149,6 +190,7 @@ public class FlowMain  {
    	    FlowStatistic.setVisible(true);
    	    desktop.add(FlowStatistic);
         
+   	    /**Internal Frame from Flow Summary Text*/
         JInternalFrame FlowSummary = new JInternalFrame("Flow Summary", true, true, true, true);
         FlowSummary.setBounds(0, 331, 600, 329);
         JTextArea textArea = new JTextArea(50, 10);
@@ -165,6 +207,7 @@ public class FlowMain  {
         //FlowInspection.setVisible(true);
         //desktop.add(FlowInspection);
         
+ 	    /**Internal Frame from Printing the Packet Sequence*/
         JInternalFrame FlowSequence = new JInternalFrame("Flow Sequence", true, true, true, true);
         FlowSequence.setBounds(601, 0, 600, 660);
         JTextArea textArea3 = new JTextArea(50, 10);
@@ -174,7 +217,11 @@ public class FlowMain  {
         desktop.add(FlowSequence);
         
         
-       // Regularly update the Frame Content
+        /************************************************************** 
+         * Update the Frame Regularly
+         **************************************************************/
+       
+        /** Regularly update the Frame Content every 3 seconds */
     	    
         for ( ; ; ) {
         	
@@ -184,7 +231,7 @@ public class FlowMain  {
        	    //desktop.add(FlowProcess.FlowInspection());
        	    desktop.add(FlowProcess.FlowSequence());
        	    desktop.revalidate();
-        	Thread.sleep(3000);
+        	Thread.sleep(10000);
        	    
         }
        

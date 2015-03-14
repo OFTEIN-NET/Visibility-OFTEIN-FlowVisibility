@@ -1,3 +1,9 @@
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
+
 package flow.visibility.tapping;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,12 +19,25 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+/**
+*
+* The class for inserting the flow to the OpenFlow Controller. 
+* Developing by utilizing OpenDayLight REST API
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
 public class OpenDaylightHelper {
 
-    public static boolean installFlow(JSONObject postData, String user,
+   /** The function for inserting the flow */ 
+	
+	public static boolean installFlow(JSONObject postData, String user,
             String password, String baseURL) {
 
         StringBuffer result = new StringBuffer();
+        
+        /** Check the connection to ODP REST API page */
+        
         try {
 
             if (!baseURL.contains("http")) {
@@ -29,19 +48,19 @@ public class OpenDaylightHelper {
                     + postData.getJSONObject("node").get("id") + "/staticFlow/"
                     + postData.get("name");
 
-            // Create URL = base URL + container
+            /** Create URL = base URL + container */
             URL url = new URL(baseURL);
 
-            // Create authentication string and encode it to Base64
+            /** Create authentication string and encode it to Base64*/
             String authStr = user + ":" + password;
             String encodedAuthStr = Base64.encodeBase64String(authStr
                     .getBytes());
 
-            // Create Http connection
+            /** Create Http connection */
             HttpURLConnection connection = (HttpURLConnection) url
                     .openConnection();
 
-            // Set connection properties
+            /** Set connection properties */
             connection.setRequestMethod("PUT");
             connection.setRequestProperty("Authorization", "Basic "
                     + encodedAuthStr);
@@ -50,12 +69,12 @@ public class OpenDaylightHelper {
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            // Set Post Data
+            /** Set JSON Post Data */
             OutputStream os = connection.getOutputStream();
             os.write(postData.toString().getBytes());
             os.close();
 
-            // Get the response from connection's inputStream
+            /** Get the response from connection's inputStream */
             InputStream content = (InputStream) connection.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     content));
@@ -67,6 +86,8 @@ public class OpenDaylightHelper {
             e.printStackTrace();
         }
 
+        /** checking the result of REST API connection */
+        
         if ("success".equalsIgnoreCase(result.toString())) {
             return true;
         } else {
@@ -80,7 +101,8 @@ public class OpenDaylightHelper {
     	//String ODPAccount = "admin";
     	//String ODPPassword = "admin";
     	
-    	//Sample post data.
+    	/**Sample post data (refer to ODP REST API) */
+    	
         JSONObject postData = new JSONObject();
         postData.put("installInHw", "true");
         postData.put("name", Flow);
@@ -111,17 +133,20 @@ public class OpenDaylightHelper {
         	postData.put("vlanId", Filter6);
         }
 
+        /** Make string for OpenFlow Action */
         String Action = "OUTPUT=" + Outgress;
         postData.put("actions", new JSONArray().put(Action));
         
-        //Node on which this flow should be installed
+        /** Select Node on which this flow should be installed */
         JSONObject node = new JSONObject();
         node.put("id", DPID);
         node.put("type", "OF");
         postData.put("node", node);
         
-        //Actual flow install
+        /** Actual flow installation */
         boolean result = OpenDaylightHelper.installFlow(postData, ODPAccount, ODPPassword, ODPURL);
+        
+        /** The Result of the Flow Installation */
         
         if(result){
             System.out.println("Flow installed Successfully");

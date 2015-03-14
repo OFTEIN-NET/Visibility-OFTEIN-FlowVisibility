@@ -1,3 +1,9 @@
+/** Copyright (C) GIST 2015
+ * This Software is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation.
+ */
+
 package flow.visibility.pcap;
 
 import java.io.PrintStream;
@@ -25,9 +31,21 @@ import org.jnetpcap.protocol.network.Ip4;
 import org.jnetpcap.protocol.tcpip.Tcp;
 import org.jnetpcap.protocol.tcpip.Udp;
 
+/**
+*
+* This class for Processing of Captured packets. 
+* Developing by using JNETPCAP Library.
+* The code refer to some sample of JNETPCAP documentation.
+*
+* @authors Aris Cahyadi Risdianto
+*/
+
+
 public class FlowProcess {
 
    private static JFreeChart createChart(XYSeriesCollection dataset) {
+	   
+	   /** The function to create the chart */ 
 	   
 	  JFreeChart Chart = ChartFactory.createHistogram("Number Packets of Flows", "Flow Number", "Number of Packets", dataset,PlotOrientation.VERTICAL, false, false, false);
 	  Chart.getXYPlot().setForegroundAlpha(0.75f);
@@ -36,6 +54,8 @@ public class FlowProcess {
 			   
    }
 	
+   /** function to create internal frame contain flow summary chart */ 
+   
    public static JInternalFrame FlowStatistic()
    {
        
@@ -60,7 +80,10 @@ public class FlowProcess {
         
         //System.out.printf(map.toString());
         //System.out.printf(map.toString2());
-           
+        
+        
+        /** Splitting the packets statistics strings from FlowMap function */
+        
         String packet = map.toString2();
         String[] NumberPacket = packet.split(",");
            
@@ -73,10 +96,14 @@ public class FlowProcess {
            	Flow.add(i, NoPacket);
 
         }
-                 
+        
+        /** Create dataset for chart */
+ 
 		final XYSeriesCollection dataset = new XYSeriesCollection();
 
    	    dataset.addSeries(Flow);
+   	    
+   	    /** Create the internal frame contain flow summary chart */
    	    
    	    JInternalFrame FlowStatistic = new JInternalFrame("Flow Statistic", true, true, true, true);
    	    FlowStatistic.setBounds(0, 0, 600, 330);
@@ -93,6 +120,8 @@ public class FlowProcess {
         
        }
    
+   
+   /** function to create internal frame contain flow summary in text */
    
    public static JInternalFrame FlowSummary()
    {
@@ -112,6 +141,8 @@ public class FlowProcess {
                + errbuf.toString());
        }  
        
+       /** create blank internal frame */
+       
        JInternalFrame FlowSummary = new JInternalFrame("Flow Summary", true, true, true, true);
        FlowSummary.setBounds(0, 331, 600, 329);
        JTextArea textArea = new JTextArea(50, 10);
@@ -120,11 +151,15 @@ public class FlowProcess {
 	        System.setErr(printStream);
 	        JScrollPane scrollPane = new JScrollPane(textArea);
 	        FlowSummary.add(scrollPane);
+	   
+	   /** Process the FlowMap */
 	        
        Pcap pcap2 = Pcap.openOffline(file, errbuf);
        JFlowMap superFlowMap = new JFlowMap(); 
        pcap2.loop(Pcap.LOOP_INFINITE, superFlowMap, null);
-	        
+	   
+       /** Redirect the FlowMap Output into the Frame Text Area */
+       
        FlowSummary.setVisible(true);
        System.out.printf("%s%n", superFlowMap);
    	
@@ -135,6 +170,8 @@ public class FlowProcess {
        
    }   
 
+   /** function to create internal frame contain flow details */
+   
    public static JInternalFrame FlowInspection()
    {
        
@@ -153,6 +190,7 @@ public class FlowProcess {
                + errbuf.toString());
        }  
 
+       /** create blank internal frame */
        
        JInternalFrame FlowInspection = new JInternalFrame("Flow Inspection", true, true, true, true);
        FlowInspection.setBounds(601, 0, 600, 660);
@@ -178,6 +216,8 @@ public class FlowProcess {
        
        Pcap pcap3 = Pcap.openOffline(file, errbuf);
        
+       /** Redirect Output into the Frame Text Area */
+       
        FlowInspection.setVisible(true);
        pcap3.loop(Pcap.LOOP_INFINITE, jpacketHandler, null);
        FlowInspection.revalidate();
@@ -188,6 +228,8 @@ public class FlowProcess {
    }
        
 
+   /** function to create internal frame contain flow sequence */
+   
    public static JInternalFrame FlowSequence()
    {
        
@@ -206,6 +248,7 @@ public class FlowProcess {
                + errbuf.toString());
        }  
 
+       /** create blank internal frame */
        
        JInternalFrame FlowSequence = new JInternalFrame("Flow Sequence", true, true, true, true);
        FlowSequence.setBounds(601, 0, 600, 660);
@@ -216,7 +259,7 @@ public class FlowProcess {
 	        JScrollPane scrollPane3 = new JScrollPane(textArea3);
 	        FlowSequence.add(scrollPane3);
 
-       
+	    /** Process to print the packet one by one */
        
 		JPacketHandler<String> jpacketHandler = new JPacketHandler<String>() {
 
@@ -228,6 +271,8 @@ public class FlowProcess {
 				Icmp icmp = new Icmp();
 				Ip4 ip4 = new Ip4();
 				Ethernet ethernet = new Ethernet();
+				
+				/** For IP Packet */
 				
 				if (packet.hasHeader(ip4)) {
 
@@ -243,6 +288,8 @@ public class FlowProcess {
 
 				}
 				
+				/** For Ethernet Packet */
+				
 				else if (packet.hasHeader(ethernet)) {
 					System.out.println(timestamp.toString() + " :  [ETH]  :  " + FormatUtils.mac(ethernet.source()) + "->" + FormatUtils.mac(ethernet.destination())+ ":" + ethernet.type());
 
@@ -251,6 +298,8 @@ public class FlowProcess {
 		};
        
        Pcap pcap4 = Pcap.openOffline(file, errbuf);
+       
+       /** Redirect the Output into Frame Text Area */
        
        FlowSequence.setVisible(true);
        pcap4.loop(Pcap.LOOP_INFINITE, jpacketHandler, null);

@@ -44,7 +44,19 @@ import jpcap.JpcapCaptor;
 import jpcap.PacketReceiver;
 import jpcap.packet.Packet;
 
+/**
+ * This class take from Java Ethereal Project Stanford University
+ * @author Paul Tarjan
+ *
+ * @edited by Aris Cahyadi Risdianto for default opening Pcap File (without interactive menu)
+ */
+
 public class Ethereal extends JApplet implements ActionListener, WindowListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private EtherealTableModel model;
 
@@ -346,8 +358,12 @@ public class Ethereal extends JApplet implements ActionListener, WindowListener 
 		if (source instanceof JMenuItem) {
 			JMenuItem menu = (JMenuItem) source;
 			if (menu.getText().equals("Open")) {
-	/* Aris
-	  			int returnVal = chooser.showOpenDialog(frame);
+	
+	/** 
+	 * Edited by Aris:
+	 * Default opening Pcap File (without asking/prompt)
+	 */
+	  		/* int returnVal = chooser.showOpenDialog(frame);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					System.out.println("You chose to open this file: "
 							+ chooser.getSelectedFile().getName());
@@ -366,6 +382,8 @@ public class Ethereal extends JApplet implements ActionListener, WindowListener 
 				try {
 					//List<EtherealPacket> packets = Parser.read(chooser
 						//	.getSelectedFile());
+					
+					/** Default file declaration */
 					File PcapFile = new File("tmp-capture-file.pcap");
 					List<EtherealPacket> packets = Parser.read(PcapFile);
 					
