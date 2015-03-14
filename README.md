@@ -1,6 +1,6 @@
 # README #
 
-FlowVisibility : Java based Visibility (Monitoring) in the Flow/Packet Level
+FlowVisibility : Java based Visibility (Monitoring) Tools in Flow/Packet Level
 
 ## Summary ##
 
@@ -8,7 +8,7 @@ FlowVisibility : Java based Visibility (Monitoring) in the Flow/Packet Level
 This tool is developed for configuring and monitoring OpenFlow based network by utilizing tapping mechanism through OpenFlow Controller (OpenDayLight). 
 
 ### Release Version ###
-This is the first version of the tools. Next Release (Works) will be Distributed FlowVisibility Tool include setup visualization.
+This is the first version of the tools and it still beta version. Next Release (Works) will be Distributed FlowVisibility Tool include setup visualization.
 
 ## How it works ##
 
@@ -68,7 +68,7 @@ For OpenFlow based software switch (Open vSwitch) use this command:
 
 ### Tapping Configuration ###
 
-* Open the OpenDayLight for the tapping switch and check the **Datapath ID** and **ports number**
+* Access the Tapping Switch or access the Tapping Switch OpenDayLight Controller Web UI (If installed) and check the **Datapath ID** and **ports number**
 * Open the Tapping configuration in the Flow visibility Tools (**Configuration > Tapping Configuration**)
 * Enter the required information (OpenDayLight information, Flow Match/Filter, and Port Destination)
 * Click **Apply Tapping Policy** for adding the Flow Entry
