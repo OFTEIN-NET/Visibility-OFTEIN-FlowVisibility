@@ -85,5 +85,6 @@ Check the main GUI will be updated automatically.
 
 ## Support and Contribution ##
 
-* Author : Aris Cahyadi Risdianto
-* Contact : aris.risdianto@gmail.com or TEIN-GIST@nm.gist.ac.kr
+* Authors : SmartX Collaboration (GIST NetCS)
+* Contributors : Aris Cahyadi Risdianto
+* Contact : TEIN-GIST@nm.gist.ac.kr
