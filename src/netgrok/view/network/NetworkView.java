@@ -32,7 +32,10 @@ import java.util.logging.*;
 //       visible edges)
 // TODO: clean up code to make more compact (e.g. create an addLabels(group))
 
-// @edited by Aris Cahyadi Risdianto for opening default Pcap File
+// @edit/modified by Aris C. Risdianto
+// @edit/modified GIST NetCS
+// 
+// Modification : for opening default Pcap File
 
 public class NetworkView extends Display {
 	

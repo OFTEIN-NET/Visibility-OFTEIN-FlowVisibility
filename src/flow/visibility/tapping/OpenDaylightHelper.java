@@ -1,7 +1,19 @@
-/** Copyright (C) GIST 2015
- * This Software is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU Lesser General Public 
- * License as published by the Free Software Foundation.
+/** Copyright 2015 SmartX Collaboration (GIST NetCS). All rights reserved.
+ *
+ * This file is part of [SmartX Visibility:FlowVisibility] Software.
+ *
+ * [SmartX Visibility:FlowVisibility] is free software: you can redistribute 
+ * it and/or modify it under the terms of the GNU General Public License as 
+ * published by the Free Software Foundation, either version 3 of 
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package flow.visibility.tapping;
@@ -21,10 +33,14 @@ import org.codehaus.jettison.json.JSONObject;
 
 /**
 *
+* The Class File of OpenDaylightHelper.
+*
 * The class for inserting the flow to the OpenFlow Controller. 
 * Developing by utilizing OpenDayLight REST API
 *
-* @authors Aris Cahyadi Risdianto
+* @author Aris C. Risdianto
+* @author GIST NetCS
+* 
 */
 
 public class OpenDaylightHelper {

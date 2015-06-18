@@ -48,7 +48,11 @@ import jpcap.packet.Packet;
  * This class take from Java Ethereal Project Stanford University
  * @author Paul Tarjan
  *
- * @edited by Aris Cahyadi Risdianto for default opening Pcap File (without interactive menu)
+ * @edit/modified by Aris C. Risdianto
+ * @edit/modified GIST NetCS
+ * 
+ * Modification: Default opening Pcap File (without interactive menu)
+ * 
  */
 
 public class Ethereal extends JApplet implements ActionListener, WindowListener {

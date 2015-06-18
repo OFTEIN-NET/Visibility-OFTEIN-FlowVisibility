@@ -9,10 +9,15 @@ import java.io.OutputStream;
 import javax.swing.JTextArea;
 
 /**
+ * The Class of CustomOutputStream.
  * This class extends from OutputStream to redirect output to a JTextArrea
+ * 
  * @author www.codejava.net
  *
- * @edited by Aris Cahyadi Risdianto for adding package information
+ * @edit/modified by Aris C. Risdianto
+ * @edit/modified GIST NetCS
+ * 
+ * Adding package information
  */
 
 public class CustomOutputStream extends OutputStream {

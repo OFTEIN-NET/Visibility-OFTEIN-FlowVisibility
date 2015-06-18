@@ -1,7 +1,19 @@
-/** Copyright (C) GIST 2015
- * This Software is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU Lesser General Public 
- * License as published by the Free Software Foundation.
+/** Copyright 2015 SmartX Collaboration (GIST NetCS). All rights reserved.
+ *
+ * This file is part of [SmartX Visibility:FlowVisibility] Software.
+ *
+ * [SmartX Visibility:FlowVisibility] is free software: you can redistribute 
+ * it and/or modify it under the terms of the GNU General Public License as 
+ * published by the Free Software Foundation, either version 3 of 
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package flow.visibility.tapping;
@@ -20,13 +32,17 @@ import javax.swing.JTextField;
 
 /**
 *
+* The Source File of FlowTapping.
+*
 * The main window GUI for Flow Tapping Applications. 
 * Contains field for OpenFlow (OpenDayLight) Controller
 * information and flow parameter (filter and redirect).
 * The action button execute through other class for 
 * querying ang inserting the flow from the controller.
 *
-* @authors Aris Cahyadi Risdianto
+* @author Aris C. Risdianto
+* @author GIST NetCS
+*
 */
 
 // Main Class with Java Panel

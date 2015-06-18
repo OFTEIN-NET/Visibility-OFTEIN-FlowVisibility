@@ -33,9 +33,13 @@ import org.jnetpcap.packet.PcapPacketHandler;
  * @author Mark Bednarczyk
  * @author Sly Technologies, Inc.
  * 
- * @edit by Aris Cahyadi Risdianto (GIST) to prepare data for Chart
+ * @edit/modified by Aris C. Risdianto
+ * @edit/modified GIST NetCS
+ * 
+ * Modification : Preparing data for the Chart
  * 
  */
+
 public class FlowMap
     extends HashMap<JFlowKey, JFlow> implements PcapPacketHandler<Object> {
 
