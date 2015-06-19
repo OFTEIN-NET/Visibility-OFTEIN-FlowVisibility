@@ -14,7 +14,7 @@ This is the first version of the tools and it still beta version. Next Release (
 
 ### Network (Physical) Setup ###
 In order to run this tool, the required network setup is:
-![FlowTapping.jpg](https://bitbucket.org/repo/bjAzAx/images/1737790542-FlowTapping.jpg)
+![FlowTapping.jpg](https://github.com/smartxbox/FlowVisibility/blob/master/FlowTapping.jpg)
 ### Required Components ###
 Then also some required components such as:
 
@@ -57,7 +57,7 @@ Click **Project** and **Run** from the Eclipse Menu
 
 Successful running will be shown this main GUI.
 
-![MainGUI.png](https://bitbucket.org/repo/bjAzAx/images/3633801302-MainGUI.png)
+![MainGUI.png](https://github.com/smartxbox/FlowVisibility/blob/master/MainGUI.png)
 
 ## How to Use (Guidelines)  ##
 
